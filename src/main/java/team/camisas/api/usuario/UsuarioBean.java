@@ -2,19 +2,22 @@ package team.camisas.api.usuario;
 
 import java.util.Date;
 
-import org.springframework.data.annotation.Id;
-
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Email;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+@Table(name = "usuarios")
+@Entity(name = "UsuarioBean")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Usuario {
+public class UsuarioBean {
 
     @Id
     private Long id;
@@ -25,5 +28,5 @@ public class Usuario {
     private Boolean ativo;
     private Boolean administrador;
     private Date dataVersao;
-    private Usuario usuario;
+    private Long idUsuario;
 }
