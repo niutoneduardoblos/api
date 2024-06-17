@@ -39,6 +39,7 @@ public class CamisasController {
 
     @PutMapping
     @Transactional
+    @RequestMapping("/curtir")
     public void curtirCamisa(@RequestBody @Valid CurtirCamisaDTO curtirCamisaDTO){
         // var Camisa = camisaRepository.getReferenceById(curtirCamisaDTO.id());
     }
