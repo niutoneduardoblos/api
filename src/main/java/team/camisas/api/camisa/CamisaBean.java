@@ -13,10 +13,12 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Table(name = "camisas")
 @Entity(name = "CamisaBean")
 @Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
@@ -32,6 +34,7 @@ public class CamisaBean {
     private Estado estado;
     private Long curtidas;
     private Date dataVersao;
+    private Boolean deletada;
     private Long idUsuario;
 
     public CamisaBean(@Valid DadosCadastroCamisaDTO dados) {
@@ -42,5 +45,7 @@ public class CamisaBean {
         this.curtidas = dados.curtidas();
         this.dataVersao = dados.dataVersao() == null ? new Date() : dados.dataVersao();
         this.idUsuario = dados.idUsuario();
+        this.deletada = false;
     }
+
 }
