@@ -19,7 +19,6 @@ import jakarta.validation.Valid;
 import team.camisas.api.camisa.CamisaRepository;
 import team.camisas.api.camisa.DadosCadastroCamisaDTO;
 import team.camisas.api.camisa.DadosListagemCamisaDTO;
-import team.camisas.api.camisa.CurtirCamisaDTO;
 import team.camisas.api.camisa.CamisaBean;
 
 @RestController
