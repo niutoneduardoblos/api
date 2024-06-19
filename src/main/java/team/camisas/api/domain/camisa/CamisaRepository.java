@@ -1,4 +1,4 @@
-package team.camisas.api.camisa;
+package team.camisas.api.domain.camisa;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

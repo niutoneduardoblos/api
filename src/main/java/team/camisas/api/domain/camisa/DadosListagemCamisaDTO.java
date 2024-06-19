@@ -1,4 +1,4 @@
-package team.camisas.api.camisa;
+package team.camisas.api.domain.camisa;
 
 public record DadosListagemCamisaDTO(Long id, String time, Long ano, Tamanho tamanho, Estado estado, Long curtidas) {
 

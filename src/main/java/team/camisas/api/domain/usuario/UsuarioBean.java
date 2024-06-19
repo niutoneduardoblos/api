@@ -1,4 +1,4 @@
-package team.camisas.api.usuario;
+package team.camisas.api.domain.usuario;
 
 import java.util.Date;
 

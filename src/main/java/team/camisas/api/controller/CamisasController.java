@@ -16,10 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import jakarta.validation.Valid;
-import team.camisas.api.camisa.CamisaRepository;
-import team.camisas.api.camisa.DadosCadastroCamisaDTO;
-import team.camisas.api.camisa.DadosListagemCamisaDTO;
-import team.camisas.api.camisa.CamisaBean;
+import team.camisas.api.domain.camisa.CamisaBean;
+import team.camisas.api.domain.camisa.CamisaRepository;
+import team.camisas.api.domain.camisa.DadosCadastroCamisaDTO;
+import team.camisas.api.domain.camisa.DadosListagemCamisaDTO;
 
 @RestController
 @RequestMapping("/camisa")
@@ -28,8 +28,8 @@ public class CamisasController {
     @Autowired
     private CamisaRepository camisaRepository;
 
-    @PostMapping
     @Transactional
+    @PostMapping
     public ResponseEntity cadastrar(@RequestBody @Valid DadosCadastroCamisaDTO dados, UriComponentsBuilder uriBuilder) {
         var camisabean = new CamisaBean(dados);
         camisaRepository.save(camisabean);
@@ -54,8 +54,8 @@ public class CamisasController {
         return ResponseEntity.ok(new DadosListagemCamisaDTO(camisaBean));
     }
 
-    @DeleteMapping("/{id}")
     @Transactional
+    @DeleteMapping("/{id}")
     public ResponseEntity excluir(@PathVariable Long id) {
         var camisaBean = camisaRepository.getReferenceById(id);
         camisaBean.setDeletada(true);

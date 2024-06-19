@@ -1,4 +1,4 @@
-package team.camisas.api.camisa;
+package team.camisas.api.domain.camisa;
 
 public enum Estado {
     AC,
