@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import jakarta.validation.Valid;
 import team.camisas.api.domain.usuario.DadosAutenticacaoDTO;
+import team.camisas.api.domain.usuario.UsuarioBean;
 
 @RestController
 @RequestMapping("/login")
@@ -19,13 +20,18 @@ public class AutenticacaoController {
     @Autowired
     private AuthenticationManager authenticationManager;
 
+    @Autowired
+    private TokenService tokenService;
+
     @PostMapping
     public ResponseEntity login(@RequestBody @Valid DadosAutenticacaoDTO dadosAutenticacaoDTO) {
 
-        var token = new UsernamePasswordAuthenticationToken(dadosAutenticacaoDTO.email(), dadosAutenticacaoDTO.senha());
-        var authentication = authenticationManager.authenticate(token);
+        var authenticationToken = new UsernamePasswordAuthenticationToken(dadosAutenticacaoDTO.email(),
+                dadosAutenticacaoDTO.senha());
+        var authentication = authenticationManager.authenticate(authenticationToken);
+        var tokenJWT = tokenService.gerarToken((UsuarioBean) authentication.getPrincipal());
 
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(new DadosTokenJWTDTO(tokenJWT));
 
     }
 }
