@@ -1,4 +1,4 @@
-package team.camisas.api.infra;
+package team.camisas.api.infra.exception;
 
 import org.springframework.validation.FieldError;
 
